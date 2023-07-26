@@ -16,10 +16,30 @@ header {
 }
 
 section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
 }
 
 section ul {
   padding: 0;
   list-style: none;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  height: 100px;
+  padding: 0 25px;
+}
+
+ul {
+  display: flex;
+  align-items: space-evenly;
 }
