@@ -6,3 +6,20 @@ h2,
 ul {
   margin: 0;
 }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 15px;
+  background-color: lightgray;
+}
+
+section {
+  padding: 20px;
+}
+
+section ul {
+  padding: 0;
+  list-style: none;
+}
