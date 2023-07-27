@@ -8,6 +8,44 @@ cartContainer.addEventListener("click", (event) => {
   }
 });
 
+const cartDeleteButton = document.querySelector("#cartDeleteButton");
+cartDeleteButton.addEventListener("click", (event) => {
+  if (event.target.id === "cartDeleteButton") {
+    currentCart.classList.add("hidden");
+  }
+});
+
+const buttonContainer = document.querySelector("#buttonContainer");
+const cashButton = document.querySelector("#cashButton");
+const creditButton = document.querySelector("#creditButton");
+const cashCheckout = document.querySelector("#cashCheckout");
+const creditCheckout = document.querySelector("#creditCheckout");
+cashButton.addEventListener("click", (event) => {
+  if (event.target.id === "cashButton") {
+    cashCheckout.classList.remove("hidden");
+  }
+});
+
+const cashDeleteButton = document.querySelector("#cashDeleteButton");
+cashDeleteButton.addEventListener("click", (event) => {
+  if (event.target.id === "cashDeleteButton") {
+    cashCheckout.classList.add("hidden");
+  }
+});
+
+creditButton.addEventListener("click", (event) => {
+  if (event.target.id === "creditButton") {
+    creditCheckout.classList.remove("hidden");
+  }
+});
+
+const creditDeleteButton = document.querySelector("#creditDeleteButton");
+creditDeleteButton.addEventListener("click", (event) => {
+  if (event.target.id === "creditDeleteButton") {
+    creditCheckout.classList.add("hidden");
+  }
+});
+
 const barbieProducts = [
   {
     src: "assets/jetski-barbie.jpg",
