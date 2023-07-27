@@ -1,5 +1,13 @@
 "use strict";
 
+const cartContainer = document.querySelector(".fa-cart-shopping");
+const currentCart = document.querySelector("#currentCart");
+cartContainer.addEventListener("click", (event) => {
+  if (event.target.classList.contains("fa-cart-shopping")) {
+    currentCart.classList.remove("hidden");
+  }
+});
+
 const barbieProducts = [
   {
     src: "assets/jetski-barbie.jpg",
@@ -16,7 +24,7 @@ const barbieProducts = [
   {
     src: "assets/movement-barbie.jpeg",
     alt: "Movement Barbie",
-    description: "Movement Barbie",
+    description: "La Croix Barbie",
     price: 45.99,
   },
   {
@@ -34,11 +42,13 @@ barbieProducts.forEach((item) => {
   const image = document.createElement("img"); // <img/>
   const descriptionP = document.createElement("p"); // <p></p>
   const priceP = document.createElement("p"); // <p></p>
+  const addToCart = document.createElement("button");
   image.setAttribute("src", item.src);
   image.setAttribute("alt", item.alt);
   descriptionP.textContent = item.description;
   priceP.textContent = item.price;
-  barbieList.append(image, descriptionP, priceP); //<li><img/><p></p></li>
+  addToCart.textContent = "Add to Cart";
+  barbieList.append(image, descriptionP, addToCart, priceP); //<li><img/><p></p></li>
   //   barbieList.append(altDescription);
   barbieContainer.append(barbieList);
   //   barbieContainer.append(barbieList);
@@ -48,7 +58,7 @@ const plushieProducts = [
   {
     src: "assets/Buff-Shark.jpeg",
     alt: "Buff Shark Plushie",
-    description: "Buff Shark",
+    description: "Buff Shark Plushie",
     price: 40.0,
   },
   {
@@ -72,11 +82,13 @@ plushieProducts.forEach((item) => {
   const image = document.createElement("img"); // <img/>
   const descriptionP = document.createElement("p"); // <p></p>
   const priceP = document.createElement("p"); // <p></p>
+  const addToCart = document.createElement("button");
   image.setAttribute("src", item.src);
   image.setAttribute("alt", item.alt);
   descriptionP.textContent = item.description;
   priceP.textContent = item.price;
-  plushieList.append(image, descriptionP, priceP);
+  addToCart.textContent = "Add to Cart";
+  plushieList.append(image, descriptionP, addToCart, priceP);
   plushieContainer.append(plushieList);
 });
 
@@ -108,10 +120,56 @@ hotWheelsProducts.forEach((item) => {
   const image = document.createElement("img"); // <img/>
   const descriptionP = document.createElement("p"); // <p></p>
   const priceP = document.createElement("p"); // <p></p>
+  const addToCart = document.createElement("button");
   image.setAttribute("src", item.src); // <img src="blah"/>
   image.setAttribute("alt", item.alt); // <img src="blah" alt="blarg"/>
   descriptionP.textContent = item.description; // <p>[{description: "yarhar"}]</p>
   priceP.textContent = item.price; // <p>[{price: $$$}]</p>
-  hotWheelList.append(image, descriptionP, priceP); // <li><img/><p></p><p></p></li>
+  addToCart.textContent = "Add to Cart";
+  hotWheelList.append(image, descriptionP, addToCart, priceP); // <li><img/><p></p><p></p></li>
   hotWheelsContainer.append(hotWheelList); // <ul><li></li></ul>
+});
+
+const actionFigureContainer = document.querySelector("#actionFigure-container");
+
+const actionFigureProducts = [
+  {
+    src: "assets/He-Man.jpeg",
+    alt: "He-Man",
+    description: "He-Man Action Figure",
+    price: 10.0,
+  },
+  {
+    src: "assets/Macho-Man-Randy-Savage.jpeg",
+    alt: "Macho Man Randy Savage",
+    description: "Macho Man Randy Savage",
+    price: 500.0,
+  },
+  {
+    src: "assets/snake-eyes.png",
+    alt: "Snake Eyes",
+    description: "Snake Eyes Action Figure",
+    price: 13.99,
+  },
+  {
+    src: "assets/Chuck-Norris.jpeg",
+    alt: "Chuck Norris",
+    description: "Chuck Norris Action Figure",
+    price: 1000.0,
+  },
+];
+
+actionFigureProducts.forEach((item) => {
+  const actionFigureList = document.createElement("li"); // <li></li>
+  const image = document.createElement("img"); // <img/>
+  const descriptionP = document.createElement("p"); // <p></p>
+  const priceP = document.createElement("p"); // <p></p>
+  const addToCart = document.createElement("button");
+  image.setAttribute("src", item.src); // <img src="blah"/>
+  image.setAttribute("alt", item.alt); // <img src="blah" alt="blarg"/>
+  descriptionP.textContent = item.description; // <p>[{description: "yarhar"}]</p>
+  priceP.textContent = item.price; // <p>[{price: $$$}]</p>
+  addToCart.textContent = "Add to Cart";
+  actionFigureList.append(image, descriptionP, addToCart, priceP); // <li><img/><p></p><p></p></li>
+  actionFigureContainer.append(actionFigureList); // <ul><li></li></ul>
 });
