@@ -32,7 +32,20 @@
         <h2>Action Figures</h2>
         <ul id="actionFigure-container"></ul>
       </section>
-      <div id="currentCart" class="hidden"></div>
+      <div id="currentCart" class="hidden">
+        <div><button id="cartDeleteButton">X</button></div>
+        <div id="buttonContainer">
+          <p>How would you like to pay?</p>
+          <button id="cashButton">Cash</button>
+          <button id="creditButton">Credit</button>
+          <div id="cashCheckout" class="hidden">
+            <button id="cashDeleteButton">X</button>
+          </div>
+          <div id="creditCheckout" class="hidden">
+            <button id="creditDeleteButton">X</button>
+          </div>
+        </div>
+      </div>
     </main>
     <script src="script.js"></script>
   </body>
