@@ -109,10 +109,32 @@ const cashButton = document.querySelector("#cashButton");
 const creditButton = document.querySelector("#creditButton");
 const cashCheckout = document.querySelector("#cashCheckout");
 const creditCheckout = document.querySelector("#creditCheckout");
+const itemContainer = document.querySelector("#item-container");
+const subtotalContainer = document.querySelector("#subtotal");
+const taxContainer = document.querySelector("#tax");
+const totalContainer = document.querySelector("#total");
 
 cartContainer.addEventListener("click", (event) => {
   if (event.target.classList.contains("fa-cart-shopping")) {
     currentCart.classList.remove("hidden");
+    purchasingArray.forEach((item) => {
+      const newLi = document.createElement("li");
+      const image = document.createElement("img");
+      const descriptionP = document.createElement("p");
+      const priceP = document.createElement("p");
+      image.setAttribute("src", item.src);
+      image.setAttribute("alt", item.alt);
+      descriptionP.textContent = item.description;
+      priceP.textContent = item.price;
+      newLi.append(image, descriptionP, priceP);
+      itemContainer.append(newLi);
+    });
+    const subtotal = purchasingArray.reduce((ac, cv) => ac + cv.price, 0);
+    const tax = subtotal * 0.06;
+    const total = subtotal + tax;
+    subtotalContainer.textContent = `Subtotal: $${subtotal}`;
+    taxContainer.textContent = `Tax: $${tax}`;
+    totalContainer.textContent = `Total: $${total}`;
   }
 });
 
@@ -181,8 +203,6 @@ main.addEventListener("click", (event) => {
   if (event.target.classList.contains("cart-button")) {
     const index = event.target.getAttribute("data-index");
     const array = event.target.getAttribute("data-array");
-    const listContainer = document.createElement("ul"); // <ul></ul>
-    const list = document.createElement("li"); // <li></li>
 
     if (array === "barbieProducts") {
       console.log(barbieProducts[index]);
@@ -198,7 +218,5 @@ main.addEventListener("click", (event) => {
       console.log(actionFigureProducts[index]);
       purchasingArray.push(actionFigureProducts[index]);
     }
-    list.append(); // <li><STUFF></li>
-    listContainer.append(list); // <ul><li></li></ul>
   }
 });
