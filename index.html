@@ -4,6 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bona+Nova:ital@1&display=swap"
+      rel="stylesheet"
+    />
     <script
       src="https://kit.fontawesome.com/f9363a78aa.js"
       crossorigin="anonymous"
@@ -12,43 +24,108 @@
   </head>
   <body>
     <header>
-      <h1>Logo</h1>
+      <h1>
+        <img src="assets/the-toy-shop-logo.jpg" alt="The Toy Shop" />
+      </h1>
+      <p>... price is just a number</p>
+      <p id="cart-counter"></p>
       <div><i class="fa-solid fa-cart-shopping"></i></div>
     </header>
     <main>
-      <section>
-        <h2>Barbies</h2>
-        <ul id="barbie-container"></ul>
-      </section>
-      <section>
-        <h2>Plushies</h2>
-        <ul id="plushie-container"></ul>
-      </section>
-      <section>
-        <h2>Hot Wheels</h2>
-        <ul id="hotWheels-container"></ul>
-      </section>
-      <section>
-        <h2>Action Figures</h2>
-        <ul id="actionFigure-container"></ul>
-      </section>
-      <div id="currentCart" class="hidden">
-        <div><button id="cartDeleteButton">X</button></div>
+      <div id="section-container">
+        <section>
+          <h2>Action Figures</h2>
+          <ul id="action-figure-container"></ul>
+        </section>
+        <section>
+          <h2>Hot Wheels</h2>
+          <ul id="hot-wheels-container"></ul>
+        </section>
+        <section>
+          <h2>Barbies</h2>
+          <ul id="barbie-container"></ul>
+        </section>
+        <section>
+          <h2>Plushies</h2>
+          <ul id="plushie-container"></ul>
+        </section>
+      </div>
+      <div id="current-cart" class="hidden">
+        <div><button id="cart-delete-button">X</button></div>
         <div id="purchasing-cart"><ul id="item-container"></ul></div>
         <div>
-          <p id="subtotal">Subtotal:</p>
-          <p id="tax">Tax:</p>
-          <p id="total">Total:</p>
+          <p id="subtotal"></p>
+          <p id="tax"></p>
+          <p id="total"></p>
         </div>
-        <div id="buttonContainer">
+        <div id="button-container">
           <p>How would you like to pay?</p>
-          <button id="cashButton">Cash</button>
-          <button id="creditButton">Credit</button>
-          <div id="cashCheckout" class="hidden">
-            <button id="cashDeleteButton">X</button>
+          <button id="cash-button">Cash</button>
+          <button id="credit-button">Credit</button>
+          <div id="cash-checkout" class="hidden">
+            <button id="cash-delete-button">X</button>
           </div>
-          <div id="creditCheckout" class="hidden">
-            <button id="creditDeleteButton">X</button>
+          <div id="credit-checkout" class="hidden">
+            <button id="credit-delete-button">X</button>
+            <form id="credit-card-form">
+              <section id="form-header">
+                <h3 id="card-details">Credit card details</h3>
+              </section>
+              <div id="form-body">
+                <input
+                  type="text"
+                  name="cardholder-name"
+                  id="cardholder-name"
+                  placeholder="Cardholder name"
+                />
+                <input
+                  type="text"
+                  name="card-number"
+                  id="card-number"
+                  placeholder="Card Number"
+                />
+                <div id="date-container">
+                  <div id="month-container">
+                    <select name="Month">
+                      <option value="january">January</option>
+                      <option value="february">February</option>
+                      <option value="march">March</option>
+                      <option value="april">April</option>
+                      <option value="may">May</option>
+                      <option value="june">June</option>
+                      <option value="july">July</option>
+                      <option value="august">August</option>
+                      <option value="september">September</option>
+                      <option value="october">October</option>
+                      <option value="november">November</option>
+                      <option value="december">December</option>
+                    </select>
+                  </div>
+                  <div id="year-container">
+                    <select name="Year">
+                      <option value="2016">2016</option>
+                      <option value="2017">2017</option>
+                      <option value="2018">2018</option>
+                      <option value="2019">2019</option>
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+                      <option value="2022">2022</option>
+                      <option value="2023">2023</option>
+                      <option value="2024">2024</option>
+                    </select>
+                  </div>
+                </div>
+                <div id="card-verification">
+                  <div id="cvv-input">
+                    <input type="text" name="cvv" id="cvv" placeholder="CVV" />
+                  </div>
+                  <div id="cvv-digits">
+                    <p>3 or 4 digits</p>
+                  </div>
+                </div>
+                <button id="submit-button">Submit</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

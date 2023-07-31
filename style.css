@@ -8,11 +8,55 @@ ul {
 }
 
 header {
+  position: fixed;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 20px 15px;
-  background-color: lightgray;
+  background-color: #3f3737;
+}
+
+.fa-cart-shopping {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  font-size: 20px;
+  color: #429f9f;
+}
+
+#cart-counter {
+  position: absolute;
+  /* right: 14px; */
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  /* background-color: white;
+  border: 1px solid white;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%; */
+}
+
+h1 img {
+  position: relative;
+  width: 90%;
+}
+
+header p {
+  color: plum;
+  font-family: "Bona Nova", serif;
+  position: absolute;
+  bottom: 1px;
+  right: 25px;
+  font-size: 15px;
+}
+
+#section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 150px;
 }
 
 section {
@@ -20,18 +64,23 @@ section {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  text-align: center;
+}
+
+section h2 {
+  font-family: "Roboto", sans-serif;
+  color: #429f9f;
+  margin-bottom: 30px;
 }
 
 section ul {
   padding: 0;
   list-style: none;
+  border-bottom: 1px solid gray;
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+#plushie-container {
+  border: none;
 }
 
 img {
@@ -48,18 +97,51 @@ ul {
   display: none;
 }
 
-#currentCart {
+.cart-button {
+  background-color: plum;
+  border-radius: 10px;
+  border: none;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 550;
+}
+
+.cart-button:hover {
+  background-color: lightblue;
+  border: 1px solid plum;
+}
+
+#current-cart {
   position: fixed;
   height: 75%;
   width: 75%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: aqua;
+  background-color: white;
+  border: 1px solid gray;
+  padding: 15px;
+  overflow: scroll;
 }
 
-#cashCheckout,
-#creditCheckout {
+#current-cart li {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  border-bottom: 1px solid black;
+  padding: 20px 0;
+}
+
+#current-cart p {
+  text-align: right;
+}
+
+#button-container {
+  float: right;
+}
+
+#cash-checkout,
+#credit-checkout {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -75,6 +157,135 @@ ul {
   flex-direction: column;
 }
 
-#currentCart {
-  overflow: scroll;
+/* ------------------ */
+
+#credit-card-form {
+  width: 380px;
+  height: 420px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 6px;
+  background-color: lightgrey;
+}
+
+#form-header {
+  height: 40px;
+  padding-top: 20px;
+  border-bottom: 1px solid #e1e8ee;
+  text-align: center;
+}
+
+#form-body {
+  padding: 30px 10px 0 10px;
+}
+
+#card-details {
+  font-family: "Roboto", sans-serif;
+  font-size: 25px;
+  margin: 0;
+  color: darkslategray;
+}
+
+#cardholder-name,
+#card-number {
+  width: 90%;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  border-radius: 6px;
+}
+
+#cardholder-name {
+  margin-top: 20px;
+}
+
+#month-container select,
+#year-container select {
+  width: 175px;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  border-radius: 6px;
+}
+
+#month-container select {
+  float: left;
+}
+
+#year-container select {
+  float: right;
+}
+
+#cvv-input input {
+  float: left;
+  width: 120px;
+  border: 1px solid black;
+  border-radius: 6px;
+  background: white;
+}
+
+#cvv-digits {
+  font-size: 12px;
+  float: left;
+  margin-bottom: 20px;
+}
+
+#cvv-digits p {
+  margin: 6px 6px;
+}
+
+#submit-button {
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  border-color: gold;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background: gold;
+  color: black;
+}
+
+@media only screen and (min-width: 768px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 100%;
+    text-align: center;
+  }
+
+  .fa-cart-shopping {
+    position: absolute;
+    right: 45px;
+    top: 15px;
+    font-size: 22px;
+    color: #429f9f;
+  }
+
+  #cart-counter {
+    position: absolute;
+    /* right: 14px; */
+    top: 15px;
+    right: 45px;
+    z-index: 2;
+    /* background-color: white;
+    border: 1px solid white;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%; */
+  }
+
+  header p {
+    position: absolute;
+    right: 50px;
+  }
+
+  h1 img {
+    width: 85%;
+  }
+
+  #section-container {
+    padding-top: 150px;
+  }
 }

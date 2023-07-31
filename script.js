@@ -52,45 +52,45 @@ const hotWheelsProducts = [
   {
     src: "assets/yellow-hot-wheel.jpeg",
     alt: "Yellow Hot Wheel",
-    description: "Yellow Hot Wheel",
-    price: 7.0,
+    description: "Yellow Flame Hot Wheels",
+    price: 99.99,
   },
   {
     src: "assets/van.png",
     alt: "Dodge Van Hot Wheel",
-    description: "Dodge Van Hot Wheel",
-    price: 13.99,
+    description: "70s Dodge Van Hot Wheels",
+    price: 150,
   },
   {
     src: "assets/bat-mobile.jpg",
     alt: "Bat Mobile Hot Wheel",
-    description: "Bat Mobile Hot Wheel",
-    price: 10.99,
+    description: "Bat Mobile Hot Wheels",
+    price: 85,
   },
 ];
 const actionFigureProducts = [
   {
     src: "assets/He-Man.jpeg",
     alt: "He-Man",
-    description: "He-Man Action Figure",
-    price: 10.0,
+    description: "He-Man",
+    price: 45.99,
   },
   {
     src: "assets/Macho-Man-Randy-Savage.jpeg",
     alt: "Macho Man Randy Savage",
     description: "Macho Man Randy Savage",
-    price: 500.0,
+    price: 750,
   },
   {
     src: "assets/snake-eyes.png",
     alt: "Snake Eyes",
-    description: "Snake Eyes Action Figure",
-    price: 13.99,
+    description: "Snake Eyes",
+    price: 75.99,
   },
   {
     src: "assets/Chuck-Norris.jpeg",
     alt: "Chuck Norris",
-    description: "Chuck Norris Action Figure",
+    description: "Chuck Norris",
     price: 1000.0,
   },
 ];
@@ -98,17 +98,20 @@ const actionFigureProducts = [
 const main = document.querySelector("main");
 const barbieContainer = document.querySelector("#barbie-container");
 const plushieContainer = document.querySelector("#plushie-container");
-const hotWheelsContainer = document.querySelector("#hotWheels-container");
-const actionFigureContainer = document.querySelector("#actionFigure-container");
+const hotWheelsContainer = document.querySelector("#hot-wheels-container");
+const actionFigureContainer = document.querySelector(
+  "#action-figure-container"
+);
 const cartContainer = document.querySelector(".fa-cart-shopping");
-const currentCart = document.querySelector("#currentCart");
+const cartCounter = document.querySelector("#cart-counter");
+const currentCart = document.querySelector("#current-cart");
 const purchasingCart = document.querySelector("#purchasing-cart");
-const cartDeleteButton = document.querySelector("#cartDeleteButton");
-const buttonContainer = document.querySelector("#buttonContainer");
-const cashButton = document.querySelector("#cashButton");
-const creditButton = document.querySelector("#creditButton");
-const cashCheckout = document.querySelector("#cashCheckout");
-const creditCheckout = document.querySelector("#creditCheckout");
+const cartDeleteButton = document.querySelector("#cart-delete-button");
+const buttonContainer = document.querySelector("#button-container");
+const cashButton = document.querySelector("#cash-button");
+const creditButton = document.querySelector("#credit-button");
+const cashCheckout = document.querySelector("#cash-checkout");
+const creditCheckout = document.querySelector("#credit-checkout");
 const itemContainer = document.querySelector("#item-container");
 const subtotalContainer = document.querySelector("#subtotal");
 const taxContainer = document.querySelector("#tax");
@@ -132,40 +135,40 @@ cartContainer.addEventListener("click", (event) => {
     const subtotal = purchasingArray.reduce((ac, cv) => ac + cv.price, 0);
     const tax = subtotal * 0.06;
     const total = subtotal + tax;
-    subtotalContainer.textContent = `Subtotal: $${subtotal}`;
-    taxContainer.textContent = `Tax: $${tax}`;
-    totalContainer.textContent = `Total: $${total}`;
+    subtotalContainer.textContent = `Subtotal: $${subtotal.toFixed(2)}`;
+    taxContainer.textContent = `Tax: $${tax.toFixed(2)}`;
+    totalContainer.textContent = `Total: $${total.toFixed(2)}`;
   }
 });
 
 cartDeleteButton.addEventListener("click", (event) => {
-  if (event.target.id === "cartDeleteButton") {
+  if (event.target.id === "cart-delete-button") {
     currentCart.classList.add("hidden");
   }
 });
 
 cashButton.addEventListener("click", (event) => {
-  if (event.target.id === "cashButton") {
+  if (event.target.id === "cash-button") {
     cashCheckout.classList.remove("hidden");
   }
 });
 
-const cashDeleteButton = document.querySelector("#cashDeleteButton");
+const cashDeleteButton = document.querySelector("#cash-delete-button");
 cashDeleteButton.addEventListener("click", (event) => {
-  if (event.target.id === "cashDeleteButton") {
+  if (event.target.id === "cash-delete-button") {
     cashCheckout.classList.add("hidden");
   }
 });
 
 creditButton.addEventListener("click", (event) => {
-  if (event.target.id === "creditButton") {
+  if (event.target.id === "credit-button") {
     creditCheckout.classList.remove("hidden");
   }
 });
 
-const creditDeleteButton = document.querySelector("#creditDeleteButton");
+const creditDeleteButton = document.querySelector("#credit-delete-button");
 creditDeleteButton.addEventListener("click", (event) => {
-  if (event.target.id === "creditDeleteButton") {
+  if (event.target.id === "credit-delete-button") {
     creditCheckout.classList.add("hidden");
   }
 });
@@ -183,7 +186,7 @@ const categoryFiller = (array, container, arrayName) => {
     image.setAttribute("src", item.src); // <img src="blah"/>
     image.setAttribute("alt", item.alt); // <img src="blah" alt="blarg"/>
     descriptionP.textContent = item.description; // <p>[{description: "yarhar"}]</p>
-    priceP.textContent = item.price; // <p>[{price: $$$}]</p>
+    priceP.textContent = `$${item.price}`; // <p>[{price: $$$}]</p>
     addToCart.textContent = "Add to Cart";
     list.append(image, descriptionP, addToCart, priceP); // <li><img/><p></p><p></p></li>
     container.append(list); // <ul><li></li></ul>
@@ -218,5 +221,7 @@ main.addEventListener("click", (event) => {
       console.log(actionFigureProducts[index]);
       purchasingArray.push(actionFigureProducts[index]);
     }
+    let counter = purchasingArray.length;
+    cartCounter.textContent = counter;
   }
 });
