@@ -54,9 +54,9 @@
         <div><button id="cart-delete-button">X</button></div>
         <div id="purchasing-cart"><ul id="item-container"></ul></div>
         <div>
-          <p id="subtotal"></p>
-          <p id="tax"></p>
-          <p id="total"></p>
+          <p class="subtotal"></p>
+          <p class="tax"></p>
+          <p class="total"></p>
         </div>
         <div id="button-container">
           <p>How would you like to pay?</p>
@@ -65,7 +65,7 @@
           <div id="cash-checkout" class="hidden">
             <button id="cash-delete-button">X</button>
             <form id="cash-checkout-form-container">
-              <p id="cash-container-total"></p>
+              <p id="`-container-total"></p>
               <input type="number" id="cash-on-hand" placeholder="Amount" />
               <button id="cash-submit">Submit</button>
             </form>
@@ -129,9 +129,17 @@
                     <p>3 or 4 digits</p>
                   </div>
                 </div>
-                <button id="submit-button">Submit</button>
+                <button id="submit-button-credit">Submit</button>
               </div>
             </form>
+          </div>
+          <div id="receipt-container" class="hidden">
+            <ul id="item-receipt-container"></ul>
+            <div>
+              <p class="subtotal"></p>
+              <p class="tax"></p>
+              <p class="total"></p>
+            </div>
           </div>
         </div>
       </div>

@@ -116,10 +116,16 @@ const cashSubmitButton = document.querySelector("#cash-submit");
 const cashOnHand = document.querySelector("#cash-on-hand");
 const cashChangeTotal = document.querySelector("#cash-checkout-change-total");
 const itemContainer = document.querySelector("#item-container");
-const subtotalContainer = document.querySelector("#subtotal");
-const taxContainer = document.querySelector("#tax");
-const totalContainer = document.querySelector("#total");
+const subtotalContainer = document.querySelector(".subtotal");
+const taxContainer = document.querySelector(".tax");
+const totalContainer = document.querySelector(".total");
 const cashContainerTotal = document.querySelector("#cash-container-total");
+const receiptContainer = document.querySelector("#receipt-container");
+const itemReceiptContainer = document.querySelector("#item-receipt-container");
+const submitButtonCredit = document.querySelector("#submit-button-credit");
+const cashCheckoutFormContainer = document.querySelector(
+  "#cash-checkout-form-container"
+);
 let total = null;
 
 cartContainer.addEventListener("click", (event) => {
@@ -154,6 +160,7 @@ cartDeleteButton.addEventListener("click", (event) => {
 });
 
 cashButton.addEventListener("click", (event) => {
+  cashContainerTotal.innerHTML = "";
   if (event.target.id === "cash-button") {
     cashCheckout.classList.remove("hidden");
     purchasingCart.classList.add("hidden");
@@ -181,14 +188,6 @@ creditDeleteButton.addEventListener("click", (event) => {
   if (event.target.id === "credit-delete-button") {
     creditCheckout.classList.add("hidden");
     purchasingCart.classList.remove("hidden");
-  }
-});
-
-cashSubmitButton.addEventListener("click", (event) => {
-  event.preventDefault();
-  if (event.target.id === "cash-submit") {
-    const change = cashOnHand.value - total;
-    cashChangeTotal.textContent = `Change: $${change.toFixed(2)}`;
   }
 });
 
@@ -239,4 +238,31 @@ main.addEventListener("click", (event) => {
     let counter = purchasingArray.length;
     cartCounter.textContent = counter;
   }
+});
+
+cashCheckoutFormContainer.addEventListener("submit", (event) => {
+  // const change = cashOnHand.value - total;
+  // cashChangeTotal.textContent = `Change: $${change.toFixed(2)}`;
+  event.preventDefault();
+  receiptContainer.classList.remove("hidden");
+  // currentCart.classList.add("hidden");
+  cashCheckout.classList.add("hidden");
+  purchasingArray.forEach((item) => {
+    const newLi = document.createElement("li");
+    const image = document.createElement("img");
+    const descriptionP = document.createElement("p");
+    const priceP = document.createElement("p");
+    image.setAttribute("src", item.src);
+    image.setAttribute("alt", item.alt);
+    descriptionP.textContent = item.description;
+    priceP.textContent = item.price;
+    newLi.append(image, descriptionP, priceP);
+    itemReceiptContainer.append(newLi);
+  });
+  //     const subtotal = purchasingArray.reduce((ac, cv) => ac + cv.price, 0);
+  //     const tax = subtotal * 0.06;
+  //     total = subtotal + tax;
+  //     subtotalContainer.textContent = `Subtotal: $${subtotal.toFixed(2)}`;
+  //     taxContainer.textContent = `Tax: $${tax.toFixed(2)}`;
+  // totalContainer.textContent = `Total: $${total.toFixed(2)}`;
 });
