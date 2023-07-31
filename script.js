@@ -112,12 +112,18 @@ const cashButton = document.querySelector("#cash-button");
 const creditButton = document.querySelector("#credit-button");
 const cashCheckout = document.querySelector("#cash-checkout");
 const creditCheckout = document.querySelector("#credit-checkout");
+const cashSubmitButton = document.querySelector("#cash-submit");
+const cashOnHand = document.querySelector("#cash-on-hand");
+const cashChangeTotal = document.querySelector("#cash-checkout-change-total");
 const itemContainer = document.querySelector("#item-container");
 const subtotalContainer = document.querySelector("#subtotal");
 const taxContainer = document.querySelector("#tax");
 const totalContainer = document.querySelector("#total");
+const cashContainerTotal = document.querySelector("#cash-container-total");
+let total = null;
 
 cartContainer.addEventListener("click", (event) => {
+  itemContainer.innerHTML = ""; // gets rid of Cart Array Duplication!!!
   if (event.target.classList.contains("fa-cart-shopping")) {
     currentCart.classList.remove("hidden");
     purchasingArray.forEach((item) => {
@@ -134,7 +140,7 @@ cartContainer.addEventListener("click", (event) => {
     });
     const subtotal = purchasingArray.reduce((ac, cv) => ac + cv.price, 0);
     const tax = subtotal * 0.06;
-    const total = subtotal + tax;
+    total = subtotal + tax;
     subtotalContainer.textContent = `Subtotal: $${subtotal.toFixed(2)}`;
     taxContainer.textContent = `Tax: $${tax.toFixed(2)}`;
     totalContainer.textContent = `Total: $${total.toFixed(2)}`;
@@ -150,6 +156,8 @@ cartDeleteButton.addEventListener("click", (event) => {
 cashButton.addEventListener("click", (event) => {
   if (event.target.id === "cash-button") {
     cashCheckout.classList.remove("hidden");
+    purchasingCart.classList.add("hidden");
+    cashContainerTotal.append(`Cart Total: $${total.toFixed(2)}`);
   }
 });
 
@@ -157,12 +165,14 @@ const cashDeleteButton = document.querySelector("#cash-delete-button");
 cashDeleteButton.addEventListener("click", (event) => {
   if (event.target.id === "cash-delete-button") {
     cashCheckout.classList.add("hidden");
+    purchasingCart.classList.remove("hidden");
   }
 });
 
 creditButton.addEventListener("click", (event) => {
   if (event.target.id === "credit-button") {
     creditCheckout.classList.remove("hidden");
+    purchasingCart.classList.add("hidden");
   }
 });
 
@@ -170,6 +180,15 @@ const creditDeleteButton = document.querySelector("#credit-delete-button");
 creditDeleteButton.addEventListener("click", (event) => {
   if (event.target.id === "credit-delete-button") {
     creditCheckout.classList.add("hidden");
+    purchasingCart.classList.remove("hidden");
+  }
+});
+
+cashSubmitButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  if (event.target.id === "cash-submit") {
+    const change = cashOnHand.value - total;
+    cashChangeTotal.textContent = `Change: $${change.toFixed(2)}`;
   }
 });
 
@@ -203,22 +222,18 @@ categoryFiller(
 );
 
 main.addEventListener("click", (event) => {
+  // purchasingArray.innerHTML = "";
+  // currentCart.innerHTML = "";
   if (event.target.classList.contains("cart-button")) {
     const index = event.target.getAttribute("data-index");
     const array = event.target.getAttribute("data-array");
-
     if (array === "barbieProducts") {
-      console.log(barbieProducts[index]);
       purchasingArray.push(barbieProducts[index]);
-      // purchasingArray.(purchasingCart);
     } else if (array === "plushieProducts") {
-      console.log(plushieProducts[index]);
       purchasingArray.push(plushieProducts[index]);
     } else if (array === "hotWheelsProducts") {
-      console.log(hotWheelsProducts[index]);
       purchasingArray.push(hotWheelsProducts[index]);
     } else if (array === "actionFigureProducts") {
-      console.log(actionFigureProducts[index]);
       purchasingArray.push(actionFigureProducts[index]);
     }
     let counter = purchasingArray.length;
