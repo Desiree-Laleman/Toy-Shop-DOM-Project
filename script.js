@@ -107,6 +107,9 @@ const cartCounter = document.querySelector("#cart-counter");
 const currentCart = document.querySelector("#current-cart");
 const purchasingCart = document.querySelector("#purchasing-cart");
 const cartDeleteButton = document.querySelector("#cart-delete-button");
+const subtotalTaxTotalField = document.querySelector(
+  "#subtotal-tax-total-field"
+);
 const buttonContainer = document.querySelector("#button-container");
 const cashButton = document.querySelector("#cash-button");
 const creditButton = document.querySelector("#credit-button");
@@ -126,12 +129,23 @@ const submitButtonCredit = document.querySelector("#submit-button-credit");
 const cashCheckoutFormContainer = document.querySelector(
   "#cash-checkout-form-container"
 );
+const creditCardForm = document.querySelector("#credit-card-form");
+const receiptHeader = document.querySelector("#receipt-header");
+const itemReceiptTotal = document.querySelector("#item-receipt-total");
+const orderConfirmation = document.querySelector("#order-confirmation");
 let total = null;
+let tax = null;
+let subtotal = null;
 
 cartContainer.addEventListener("click", (event) => {
   itemContainer.innerHTML = ""; // gets rid of Cart Array Duplication!!!
   if (event.target.classList.contains("fa-cart-shopping")) {
     currentCart.classList.remove("hidden");
+    subtotalTaxTotalField.classList.remove("hidden");
+    buttonContainer.classList.remove("hidden");
+
+    // receiptContainer.classList.remove("hidden");
+    // receiptHeader.classList.add("hidden");
     purchasingArray.forEach((item) => {
       const newLi = document.createElement("li");
       const image = document.createElement("img");
@@ -144,8 +158,8 @@ cartContainer.addEventListener("click", (event) => {
       newLi.append(image, descriptionP, priceP);
       itemContainer.append(newLi);
     });
-    const subtotal = purchasingArray.reduce((ac, cv) => ac + cv.price, 0);
-    const tax = subtotal * 0.06;
+    subtotal = purchasingArray.reduce((ac, cv) => ac + cv.price, 0);
+    tax = subtotal * 0.06;
     total = subtotal + tax;
     subtotalContainer.textContent = `Subtotal: $${subtotal.toFixed(2)}`;
     taxContainer.textContent = `Tax: $${tax.toFixed(2)}`;
@@ -241,12 +255,19 @@ main.addEventListener("click", (event) => {
 });
 
 cashCheckoutFormContainer.addEventListener("submit", (event) => {
-  // const change = cashOnHand.value - total;
-  // cashChangeTotal.textContent = `Change: $${change.toFixed(2)}`;
+  itemReceiptContainer.innerHTML = "";
+  subtotal.textContent = `Subtotal: $${subtotal}`;
+  const change = cashOnHand.value - total;
+  cashChangeTotal.textContent = `Change: $${change.toFixed(2)}`;
   event.preventDefault();
   receiptContainer.classList.remove("hidden");
+  orderConfirmation.classList.remove("hidden");
+
   // currentCart.classList.add("hidden");
-  cashCheckout.classList.add("hidden");
+  subtotalTaxTotalField.classList.add("hidden");
+  // receiptHeader.classList.remove("hidden");
+  buttonContainer.classList.add("hidden");
+  // cashCheckout.classList.add("hidden");
   purchasingArray.forEach((item) => {
     const newLi = document.createElement("li");
     const image = document.createElement("img");
@@ -259,10 +280,28 @@ cashCheckoutFormContainer.addEventListener("submit", (event) => {
     newLi.append(image, descriptionP, priceP);
     itemReceiptContainer.append(newLi);
   });
-  //     const subtotal = purchasingArray.reduce((ac, cv) => ac + cv.price, 0);
-  //     const tax = subtotal * 0.06;
-  //     total = subtotal + tax;
-  //     subtotalContainer.textContent = `Subtotal: $${subtotal.toFixed(2)}`;
-  //     taxContainer.textContent = `Tax: $${tax.toFixed(2)}`;
-  // totalContainer.textContent = `Total: $${total.toFixed(2)}`;
+});
+
+creditCardForm.addEventListener("submit", (event) => {
+  itemReceiptContainer.innerHTML = "";
+  event.preventDefault();
+  receiptContainer.classList.remove("hidden");
+  orderConfirmation.classList.remove("hidden");
+  // currentCart.classList.add("hidden");
+  subtotalTaxTotalField.classList.add("hidden");
+  buttonContainer.classList.add("hidden");
+  // cashCheckout.classList.add("hidden");
+  purchasingArray.forEach((item) => {
+    const newLi = document.createElement("li");
+    const image = document.createElement("img");
+    const descriptionP = document.createElement("p");
+    const priceP = document.createElement("p");
+    image.setAttribute("src", item.src);
+    image.setAttribute("alt", item.alt);
+    descriptionP.textContent = item.description;
+    priceP.textContent = item.price;
+    newLi.append(image, descriptionP, priceP);
+    itemReceiptContainer.append(newLi);
+    // itemReceiptTotal.append(subtotalTaxTotalField);
+  });
 });
