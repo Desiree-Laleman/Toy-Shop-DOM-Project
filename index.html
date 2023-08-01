@@ -53,23 +53,26 @@
       <div id="current-cart" class="hidden">
         <div><button id="cart-delete-button">X</button></div>
         <div id="purchasing-cart"><ul id="item-container"></ul></div>
-        <div>
+        <div id="subtotal-tax-total-field" class="hidden">
           <p class="subtotal"></p>
           <p class="tax"></p>
           <p class="total"></p>
         </div>
-        <div id="button-container">
+        <div id="button-container" class="hidden">
           <p>How would you like to pay?</p>
           <button id="cash-button">Cash</button>
           <button id="credit-button">Credit</button>
           <div id="cash-checkout" class="hidden">
             <button id="cash-delete-button">X</button>
             <form id="cash-checkout-form-container">
-              <p id="`-container-total"></p>
-              <input type="number" id="cash-on-hand" placeholder="Amount" />
+              <p id="cash-container-total"></p>
+              <input
+                type="number"
+                id="cash-on-hand"
+                placeholder="Cash Tendered"
+              />
               <button id="cash-submit">Submit</button>
             </form>
-            <p id="cash-checkout-change-total"></p>
           </div>
           <div id="credit-checkout" class="hidden">
             <button id="credit-delete-button">X</button>
@@ -133,14 +136,18 @@
               </div>
             </form>
           </div>
-          <div id="receipt-container" class="hidden">
-            <ul id="item-receipt-container"></ul>
-            <div>
-              <p class="subtotal"></p>
-              <p class="tax"></p>
-              <p class="total"></p>
-            </div>
+        </div>
+        <div id="receipt-container" class="hidden">
+          <h3 id="order-confirmation" class="hidden">
+            Thank you for shopping with us!
+          </h3>
+          <div id="receipt-list"><ul id="item-receipt-container"></ul></div>
+          <div id="item-receipt-total">
+            <!-- <p class="subtotal"></p>
+            <p class="tax"></p>
+            <p class="total"></p> -->
           </div>
+          <p id="cash-checkout-change-total"></p>
         </div>
       </div>
     </main>
