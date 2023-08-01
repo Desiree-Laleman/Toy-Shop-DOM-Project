@@ -1,7 +1,5 @@
 "use strict";
-
 const purchasingArray = [];
-
 const barbieProducts = [
   {
     src: "assets/jetski-barbie.jpg",
@@ -94,7 +92,6 @@ const actionFigureProducts = [
     price: 1000.0,
   },
 ];
-
 const main = document.querySelector("main");
 const barbieContainer = document.querySelector("#barbie-container");
 const plushieContainer = document.querySelector("#plushie-container");
@@ -136,14 +133,12 @@ const orderConfirmation = document.querySelector("#order-confirmation");
 let total = null;
 let tax = null;
 let subtotal = null;
-
 cartContainer.addEventListener("click", (event) => {
   itemContainer.innerHTML = ""; // gets rid of Cart Array Duplication!!!
   if (event.target.classList.contains("fa-cart-shopping")) {
     currentCart.classList.remove("hidden");
     subtotalTaxTotalField.classList.remove("hidden");
     buttonContainer.classList.remove("hidden");
-
     // receiptContainer.classList.remove("hidden");
     // receiptHeader.classList.add("hidden");
     purchasingArray.forEach((item) => {
@@ -166,13 +161,11 @@ cartContainer.addEventListener("click", (event) => {
     totalContainer.textContent = `Total: $${total.toFixed(2)}`;
   }
 });
-
 cartDeleteButton.addEventListener("click", (event) => {
   if (event.target.id === "cart-delete-button") {
     currentCart.classList.add("hidden");
   }
 });
-
 cashButton.addEventListener("click", (event) => {
   cashContainerTotal.innerHTML = "";
   if (event.target.id === "cash-button") {
@@ -181,7 +174,6 @@ cashButton.addEventListener("click", (event) => {
     cashContainerTotal.append(`Cart Total: $${total.toFixed(2)}`);
   }
 });
-
 const cashDeleteButton = document.querySelector("#cash-delete-button");
 cashDeleteButton.addEventListener("click", (event) => {
   if (event.target.id === "cash-delete-button") {
@@ -189,14 +181,12 @@ cashDeleteButton.addEventListener("click", (event) => {
     purchasingCart.classList.remove("hidden");
   }
 });
-
 creditButton.addEventListener("click", (event) => {
   if (event.target.id === "credit-button") {
     creditCheckout.classList.remove("hidden");
     purchasingCart.classList.add("hidden");
   }
 });
-
 const creditDeleteButton = document.querySelector("#credit-delete-button");
 creditDeleteButton.addEventListener("click", (event) => {
   if (event.target.id === "credit-delete-button") {
@@ -204,7 +194,6 @@ creditDeleteButton.addEventListener("click", (event) => {
     purchasingCart.classList.remove("hidden");
   }
 });
-
 const categoryFiller = (array, container, arrayName) => {
   array.forEach((item, index) => {
     const list = document.createElement("li"); // <li></li>
@@ -224,7 +213,6 @@ const categoryFiller = (array, container, arrayName) => {
     container.append(list); // <ul><li></li></ul>
   });
 };
-
 categoryFiller(barbieProducts, barbieContainer, "barbieProducts");
 categoryFiller(plushieProducts, plushieContainer, "plushieProducts");
 categoryFiller(hotWheelsProducts, hotWheelsContainer, "hotWheelsProducts");
@@ -233,7 +221,6 @@ categoryFiller(
   actionFigureContainer,
   "actionFigureProducts"
 );
-
 main.addEventListener("click", (event) => {
   // purchasingArray.innerHTML = "";
   // currentCart.innerHTML = "";
@@ -253,16 +240,16 @@ main.addEventListener("click", (event) => {
     cartCounter.textContent = counter;
   }
 });
-
 cashCheckoutFormContainer.addEventListener("submit", (event) => {
   itemReceiptContainer.innerHTML = "";
-  subtotal.textContent = `Subtotal: $${subtotal}`;
+  subtotalContainer.textContent = `Subtotal: $${subtotal.toFixed(2)}`;
+  taxContainer.textContent = `Tax: $${tax.toFixed(2)}`;
+  totalContainer.textContent = `Total: $${total.toFixed(2)}`;
   const change = cashOnHand.value - total;
   cashChangeTotal.textContent = `Change: $${change.toFixed(2)}`;
   event.preventDefault();
   receiptContainer.classList.remove("hidden");
   orderConfirmation.classList.remove("hidden");
-
   // currentCart.classList.add("hidden");
   subtotalTaxTotalField.classList.add("hidden");
   // receiptHeader.classList.remove("hidden");
@@ -278,12 +265,19 @@ cashCheckoutFormContainer.addEventListener("submit", (event) => {
     descriptionP.textContent = item.description;
     priceP.textContent = item.price;
     newLi.append(image, descriptionP, priceP);
-    itemReceiptContainer.append(newLi);
+    itemReceiptContainer.append(
+      newLi,
+      subtotalContainer,
+      taxContainer,
+      totalContainer
+    );
   });
 });
-
 creditCardForm.addEventListener("submit", (event) => {
   itemReceiptContainer.innerHTML = "";
+  subtotalContainer.textContent = `Subtotal: $${subtotal.toFixed(2)}`;
+  taxContainer.textContent = `Tax: $${tax.toFixed(2)}`;
+  totalContainer.textContent = `Total: $${total.toFixed(2)}`;
   event.preventDefault();
   receiptContainer.classList.remove("hidden");
   orderConfirmation.classList.remove("hidden");
@@ -301,7 +295,12 @@ creditCardForm.addEventListener("submit", (event) => {
     descriptionP.textContent = item.description;
     priceP.textContent = item.price;
     newLi.append(image, descriptionP, priceP);
-    itemReceiptContainer.append(newLi);
+    itemReceiptContainer.append(
+      newLi,
+      subtotalContainer,
+      taxContainer,
+      totalContainer
+    );
     // itemReceiptTotal.append(subtotalTaxTotalField);
   });
 });
