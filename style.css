@@ -1,12 +1,10 @@
 /* resets */
-
 body,
 h1,
 h2,
 ul {
   margin: 0;
 }
-
 header {
   position: fixed;
   display: flex;
@@ -15,7 +13,6 @@ header {
   padding: 20px 15px;
   background-color: #3f3737;
 }
-
 .fa-cart-shopping {
   position: absolute;
   right: 12px;
@@ -23,7 +20,6 @@ header {
   font-size: 20px;
   color: #429f9f;
 }
-
 #cart-counter {
   position: absolute;
   /* right: 14px; */
@@ -38,12 +34,10 @@ header {
   color: white;
   font-size: 20px;
 }
-
 h1 img {
   position: relative;
   width: 90%;
 }
-
 header p {
   color: plum;
   font-family: "Bona Nova", serif;
@@ -52,7 +46,6 @@ header p {
   right: 25px;
   font-size: 15px;
 }
-
 #section-container {
   display: flex;
   flex-direction: column;
@@ -60,59 +53,55 @@ header p {
   justify-content: center;
   padding-top: 150px;
 }
-
-section {
+#section-container section {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   text-align: center;
 }
-
 section h2 {
   font-family: "Roboto", sans-serif;
   color: #429f9f;
   margin-bottom: 30px;
 }
-
 section ul {
+  display: flex;
+  flex-direction: column;
   padding: 0;
   list-style: none;
   border-bottom: 1px solid gray;
 }
-
 #plushie-container {
   border: none;
 }
-
-img {
-  height: 100px;
+#section-container img {
+  height: 200px;
   padding: 0 25px;
 }
-
 ul {
   display: flex;
   align-items: space-evenly;
 }
-
+#item-container li img {
+  height: 150px;
+}
 .hidden {
   display: none;
 }
-
 .cart-button {
   background-color: plum;
+  padding: 5px 15px;
   border-radius: 10px;
   border: none;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-weight: 550;
 }
-
 .cart-button:hover {
   background-color: lightblue;
   border: 1px solid plum;
 }
-
 #current-cart {
   position: fixed;
   height: 75%;
@@ -125,7 +114,6 @@ ul {
   padding: 15px;
   overflow: scroll;
 }
-
 #current-cart li {
   display: flex;
   justify-content: space-between;
@@ -133,15 +121,12 @@ ul {
   border-bottom: 1px solid black;
   padding: 20px 0;
 }
-
 #current-cart p {
   text-align: right;
 }
-
 #button-container {
   float: right;
 }
-
 #cash-checkout,
 #credit-checkout {
   position: fixed;
@@ -153,7 +138,6 @@ ul {
   background-color: white;
   border: 1px solid black;
 }
-
 #cash-checkout-form-container {
   width: 380px;
   height: 420px;
@@ -169,7 +153,6 @@ ul {
   align-items: center;
   justify-content: center;
 }
-
 #cash-submit {
   cursor: pointer;
   font-size: 16px;
@@ -180,7 +163,6 @@ ul {
   background: gold;
   color: black;
 }
-
 #cash-container-total {
   font-family: "Roboto", sans-serif;
   font-size: 25px;
@@ -188,24 +170,19 @@ ul {
   color: darkslategray;
   padding-bottom: 20px;
 }
-
 #cash-on-hand {
   border: 1px solid black;
   border-radius: 6px;
   padding: 2px;
 }
-
 #cash-submit {
   margin: 10px;
 }
-
 #item-container {
   display: flex;
   flex-direction: column;
 }
-
 /* ------------------ */
-
 #credit-card-form {
   width: 380px;
   height: 420px;
@@ -217,25 +194,21 @@ ul {
   border-radius: 6px;
   background-color: lightgrey;
 }
-
 #form-header {
   height: 40px;
   padding-top: 20px;
   border-bottom: 1px solid #e1e8ee;
   text-align: center;
 }
-
 #form-body {
   padding: 30px 10px 0 10px;
 }
-
 #card-details {
   font-family: "Roboto", sans-serif;
   font-size: 25px;
   margin: 0;
   color: darkslategray;
 }
-
 #cardholder-name,
 #card-number {
   width: 90%;
@@ -243,11 +216,9 @@ ul {
   border: 1px solid black;
   border-radius: 6px;
 }
-
 #cardholder-name {
   margin-top: 20px;
 }
-
 #month-container select,
 #year-container select {
   width: 175px;
@@ -255,15 +226,12 @@ ul {
   border: 1px solid black;
   border-radius: 6px;
 }
-
 #month-container select {
   float: left;
 }
-
 #year-container select {
   float: right;
 }
-
 #cvv-input input {
   float: left;
   width: 120px;
@@ -271,17 +239,14 @@ ul {
   border-radius: 6px;
   background: white;
 }
-
 #cvv-digits {
   font-size: 12px;
   float: left;
   margin-bottom: 20px;
 }
-
 #cvv-digits p {
   margin: 6px 6px;
 }
-
 #submit-button-credit {
   cursor: pointer;
   font-size: 16px;
@@ -292,25 +257,45 @@ ul {
   background: gold;
   color: black;
 }
-
 #receipt-container {
   display: flex;
   flex-direction: column;
   background-color: white;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 }
-
 #item-receipt-container {
   display: flex;
   flex-direction: column;
 }
-
 #item-receipt-container li {
   justify-content: space-between;
   list-style: none;
   border-bottom: 1px solid black;
   padding: 20px 0;
+}
+#item-receipt-container img {
+  height: 150px;
+}
+#item-receipt-container p {
+  margin: 4px;
+}
+
+#cart-delete-button {
+  /* color: white; */
+  background-color: gold;
+  padding: 5px 8px;
+  border-radius: 50%;
+  border: none;
+}
+#cash-delete-button,
+#credit-delete-button {
+  margin: 15px;
+  /* color: white; */
+  background-color: gold;
+  padding: 5px 8px;
+  border-radius: 50%;
+  border: none;
 }
 
 @media only screen and (min-width: 768px) {
@@ -321,7 +306,6 @@ ul {
     min-width: 100%;
     text-align: center;
   }
-
   .fa-cart-shopping {
     position: absolute;
     right: 45px;
@@ -329,7 +313,6 @@ ul {
     font-size: 22px;
     color: #429f9f;
   }
-
   #cart-counter {
     position: absolute;
     /* right: 14px; */
@@ -342,17 +325,22 @@ ul {
     height: 7px;
     border-radius: 50%; */
   }
-
   header p {
     position: absolute;
     right: 50px;
   }
-
   h1 img {
     width: 85%;
   }
-
   #section-container {
     padding-top: 150px;
+  }
+  section ul {
+    display: flex;
+    flex-direction: row;
+  }
+  #section-container img {
+    height: 150px;
+    padding: 0 25px;
   }
 }
