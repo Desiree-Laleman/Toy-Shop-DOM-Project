@@ -8,7 +8,7 @@ const barbieProducts = [
     price: 50.99,
   },
   {
-    src: "assets/tina-turner-barbie.jpeg",
+    src: "assets/Tina-Turner-Barbie.jpeg",
     alt: "Tina Turner Barbie",
     description: "Tina Turner Barbie",
     price: 199.99,
