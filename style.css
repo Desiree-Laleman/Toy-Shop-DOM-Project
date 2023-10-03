@@ -12,6 +12,7 @@ header {
   align-items: center;
   padding: 20px 15px;
   background-color: rgba(0, 0, 0, 0.8);
+  min-width: 95%;
 }
 /* @keyframes h1 {
   0% {
@@ -33,7 +34,7 @@ header {
 #toy-shop {
   font-family: "Neonderthaw", cursive;
   color: orangered;
-  font-size: 90px;
+  font-size: 50px;
 }
 .fa-cart-shopping {
   position: absolute;
@@ -341,23 +342,20 @@ ul {
   }
   #cart-counter {
     position: absolute;
-    /* right: 14px; */
     top: 6px;
     right: 40px;
     z-index: 2;
-    /* background-color: white;
-    border: 1px solid white;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%; */
   }
   header p {
     position: absolute;
     right: 50px;
   }
-  h1 img {
-    width: 85%;
+  #toy-shop {
+    font-size: 90px;
   }
+  /* h1 img {
+    width: 85%;
+  } */
   #section-container {
     padding-top: 150px;
   }
